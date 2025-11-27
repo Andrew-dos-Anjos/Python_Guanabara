@@ -1,0 +1,153 @@
+(Aulas 1 - 15 no Notion)
+... Mundo 3!
+todo Aula16_Tuplas:
+Uma tupla é o termo dado para alocação de mais de um valor em uma única variável.
+Toda tupla é imutável, isso quer dizer que uma vez definidos os itens que a compõem ela não pode ser alterada.
+()Tupla; []Lista; {}Dicionário.
+43min Desafios
+
+todo Aula17_Listas:
+A lista permite que haja alteração de valores em seus elementos, o que a diferencia inicialmente da tupla.
+Outro fator que a lista permite é a inclusão de mais itens inclusive em sepaços específicos, ex.:
+lista = [x, y, z]
+lista.append("w") -> [x, y, z, w]; lista.insert(0,"w") -> [w, x, y, z].
+Também é possível apagar itens:
+del lista[2] -> [w, x, z]; lista.remove("w") -> [x, z]; lista.pop -> [x].
+Para elementos com valores numéricos é possível utilizar os comandos:
+var = list(range(4, 11)) -> ordena de 4 a 10; var.sort(reverse=True) -> ordena N°s de trás para frente.
+28min Desafios
+
+todo Aula18_Listas2:
+Conceito de listas dentro de listas, ex.:
+l1 = [1, 2, 3]; l2 = [3, 2, 1]; conjunto = list(l1, l2) == conjunto = [[1, 2, 3], [3, 2, 1]].
+Para print(conjunto[1][0]) ↵ 3
+24min Desafios
+
+todo Aula19_Dicionários:
+Similar às listas, dicionários também utilizam variáveis para implementar valores,
+com o diferencial de poder especificar a(s) posições com nomes, ex.:
+L: dados = ["Pedro", 19] -> print(dados[0]) ↵ "Pedro";
+D: dados = {'nome': "Pedro", 'idade': 19} -> print(dados[idade]) ↵ 19.
+Para o acréscimo de novos elementos ou remoção:
+dados['gen'] = "M" -> {'nome': "Pedro", 'idade': 19, 'gen': "M"};
+del dados['idade'] -> {'nome': "Pedro", 'gen': "M"}
+
+Outra possibilidade é a forma de escrita:
+filme = {'titulo': "O rei leão",
+         'ano': 1994,
+         'produtora': "Disney™"
+        }
+*9:05* alguns conceitos:
+dc.values(); dc.keys(); dc.items().
+¹print(filme.values()) ↵ dict_values(['O rei leão', 1994, 'Disney™'])
+²print(filme.keys())   ↵ dict_keys(['titulo', 'ano', 'produtora'])
+³print(filme.items())  ↵ dict_items([('titulo', 'O rei leão'), ('ano', 1994), ('produtora', 'Disney™')])
+for k,v in filme.items()
+    print(f"O valor da chave {k} é {v}")
+Os dicionários também podem ser armazenados dentro de listas, ex.:
+locadora = list()
+locadora.append(filme)
+30:30 Desafios
+
+todo Aula20_Funções:
+As funções são como um atalho para simplificar comandos por linhas de código personalizadas.
+Escrita -- def variavel():, ex¹.:
+def linha():
+    print("-"*30)
+Assim, toda vez que 'linha()' for escrito tera como valor: 'print("-"*30)'
+ex².:
+def texto(txt):
+    print("-"*30)
+    print(txt)
+    print("-"*30)
+* Toda função deve ter duas linhas separando a def do cod principal *
+*                                                                   *
+texto('Com este comando essa mensagem substitui a linha do meio no lugar de "txt" ;)')
+40:40 Desafios
+
+todo Aula21_Funções2:
+.Interactive Help (4:00)
+A ajuda interativa é um recurso interno para sanar duvidas recorrentes com o programa.
+Pode ser escrito de duas maneiras:
+help(x) ou print(x.__doc__)
+
+.Docstrings (9:10)
+Para funções criadas no próprio código que não sejam parâmetros já configurados, o comando help() também pode ser usado
+com o nome criado para a def:
+def exemplo(i, f, p):
+    '''
+    Isso é a Docstring
+    Param i: Argumento inicial
+    Param f: Argumento final
+    Param p: Argumento do passo a passo
+    '''
+    programa...
+
+exemplo(0, 100, 10)
+help(exemplo) ↵ Mostra a string da explicação em aspas triplas da def
+
+.Argumentos opcionais (15:50)
+Os parâmetros opcionais servem para o caso de um escopo não ser definido:
+def exemplo(a, b, c=0):
+    '''
+    Param a: 1º Argumento
+    Param b: 2º Argumento
+    Param c: 3º Argumento
+    '''
+    s = a + b + c
+    print(s)
+
+exemplo(1, 2)
+...
+Para o caso do "c" não ser preenchido como no ex., o argumento/parâmetro opcional definido para que ocorra tudo bem com
+a execução do código é 0, exibindo assim o num 3.
+
+.Retorno de resultados (31:40)
+Em situações como a de cima, porém, com mais de uma operação de soma, é interessante implementar o recurso return
+possibilitando assim a var "s" redirecione o valor para cada operação. Ex.:
+def exemplo(a=0, b=0, c=0):
+    s = a + b + c
+    return s
+
+op1 = exemplo(3, 2, 5)
+op2 = exemplo(2, 2)
+op3 = exemplo(6)
+print(f"Os resultados foram {op1}, {op2} e {op3}.")
+
+.Escopo de variáveis (21:50)
+Variáveis criadas no código principal são chamadas de variáveis globais. Significa que o valor definido para essa var é
+o mesmo considerado para o código inteiro (podendo ser modificado).
+No caso de uma var x ser alterada dentro de uma função ela é considerada como var local, ou seja, só é valida dentro
+daquela def. Também podendo ser tranformadas em var globais com a expressão global(x). Ex.:
+def teste(y):
+    global x
+    x = 8
+    y += 4
+    z = 2
+    Print(f"Dentro vale {x}") ↵ 8
+    Print(f"Dentro vale {y}") ↵ 9
+    Print(f"Dentro vale {z}") ↵ 2
+
+x = 5
+teste(x)
+Print(f"Fora vale {x}") ↵ 8
+
+40min Desafios
+
+todo Aula22_Módulos e Pacotes:
+Relembrando a Aula_8 os módulos ou modulações nada mais são que a importação de ulguma função para simplificar o código.
+6min: Também é possível importar funções criadas em outros projetos assim como as bibliotecas internas.
+...
+20min: Quando os próprios módulos se tornam muito grandes então os pacotes ajudam a organizar melhor as "bibliotecas".
+
+26:50 Desafios
+
+todo Aula23_Tratamento de Erros e Exceções:
+Sintaxe x Semântica: ¹Erro de escrita; ²Erro na elaboração.
+Para os erros de Semântica temos as excessões, que são falhas as técnicas.
+Comandos de tratamento:__try:__ e __except:__;
+Complementos: __else:__ e __finally__.
+
+27:20 Desafios
+
+todo **Mundo 4 em breve...**
